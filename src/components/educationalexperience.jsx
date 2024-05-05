@@ -1,43 +1,54 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
-function EducationExperience () {
-    const[educationExperience, setEducationExperience] = useState({})
+function EducationInputs ({info, handleFormChange}) {
+    return (<>
+    {/* School Name */}
+    <input
+    type="text"
+    id="name"
+    value = {info.name}
+    placeholder='School Name'
+    onChange={handleFormChange}
+    />
+    {/* Title of Study */}
+    <input
+    type="text"
+    id="title"
+    value = {info.title}
+    placeholder='Title of Study'
+    onChange={handleFormChange}
+    />
+    {/* Date of Study */}
+    <input
+    type="text"
+    id="date"
+    value = {info.date}
+    placeholder='Date of Study'
+    onChange={handleFormChange}
+    />
+    </>)
+}
+function EducationExperience ({info, setValue}) {
+    const [show, setShow] = useState(false)
     const handleFormChange = (event) => {
         const { id, value } = event.target; 
-        const newInfo = {...educationExperience, [id]: value}
-        setEducationExperience(newInfo)
+        const newInfo = {...info, [id]: value}
+        setValue(newInfo)
         console.log(newInfo)
     }
+    const handleShow = () => {
+        setShow(!show);
+        console.log(!show)
+    };
+
     return (
         <div className="educationExperience dataContainer">
             <h3 className='subtitle'>
                 Educational Experience
             </h3>
-            {/* School Name */}
-            <input
-            type="text"
-            id="name"
-            value = {educationExperience.name}
-            placeholder='School Name'
-            onChange={handleFormChange}
-            />
-            {/* Title of Study */}
-            <input
-            type="text"
-            id="title"
-            value = {educationExperience.title}
-            placeholder='Title of Study'
-            onChange={handleFormChange}
-            />
-            {/* Date of Study */}
-            <input
-            type="text"
-            id="date"
-            value = {educationExperience.date}
-            placeholder='Date of Study'
-            onChange={handleFormChange}
-            />
+            {show && <EducationInputs info={info} handleFormChange={handleFormChange}/>}
             <div className="controllers">
-                <button>Edit</button>
+                <button onClick={handleShow}>Edit</button>
                 <button>Update</button>
             </div>
         </div>

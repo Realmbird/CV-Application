@@ -1,22 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
-function WorkExperience () {
-    const[workExperience, setWorkExperience] = useState({})
-    const handleFormChange = (event) => {
-        const { id, value } = event.target; 
-        const newInfo = {...workExperience, [id]: value}
-        setWorkExperience(newInfo)
-        console.log(newInfo)
-    }
+function WorkExperienceInputs ({info, handleFormChange}) {
     return (
-        <div className = "workExperience dataContainer">
-            <h3 className='subtitle'>
-                Work Experience
-            </h3>
+        <>
             {/* Company */}
             <input
             type="text"
             id="name"
-            value = {workExperience.name}
+            value = {info.name}
             placeholder='Company'
             onChange={handleFormChange}
             />
@@ -24,7 +15,7 @@ function WorkExperience () {
             <input
             type="text"
             id="position"
-            value = {workExperience.position}
+            value = {info.position}
             placeholder='Position'
             onChange={handleFormChange}
             />
@@ -32,7 +23,7 @@ function WorkExperience () {
             <input
             type="text"
             id="start_date"
-            value = {workExperience.start_date}
+            value = {info.start_date}
             placeholder='Start Date'
             onChange={handleFormChange}
             />
@@ -40,10 +31,36 @@ function WorkExperience () {
             <input
             type="text"
             id="end_date"
-            value = {workExperience.end_date}
+            value = {info.end_date}
             placeholder='End Date'
             onChange={handleFormChange}
             />
+        </>
+    )
+}
+function WorkExperience ({info, setValue}) {
+    const [show, setShow] = useState(false)
+    const handleFormChange = (event) => {
+        const { id, value } = event.target; 
+        const newInfo = {...info, [id]: value}
+        setValue(newInfo)
+        console.log(newInfo)
+    }
+    const handleShow = () => {
+        setShow(!show);
+        console.log(!show)
+    };
+
+    return (
+        <div className = "workExperience dataContainer">
+            <h3 className='subtitle'>
+                Work Experience
+            </h3>
+            {show && <WorkExperienceInputs info={info} handleFormChange={handleFormChange}/>}
+            <div className="controllers">
+                <button onClick={handleShow}>Edit</button>
+                <button>Update</button>
+            </div>
         </div>
     )
 }

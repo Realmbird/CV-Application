@@ -8,6 +8,8 @@ import './styles/section.css'
 function App() {
   // for general learning 
   const [generalInfo, setGeneralInfo] = useState({});
+  const [educationalExperience, setEducationalExperience] = useState({})
+  const [workExperience, setWorkExperience] = useState({})
   
   return (
     <>
@@ -15,8 +17,8 @@ function App() {
        info = {generalInfo}
         setValue = {setGeneralInfo}
         />
-      <EducationExperience />
-      <WorkExperience />
+      <EducationExperience info = {educationalExperience} setValue={setEducationalExperience}/>
+      <WorkExperience info = {workExperience} setValue = {setWorkExperience}/>
     </>
   )
 }
