@@ -32,7 +32,7 @@ function GeneralInputs ({info, handleFormChange}){
     )
 }
 
-function GeneralInfo ({info, setValue}) {
+function GeneralInfo ({info, setValue, cvData, updateCV}) {
     const [show, setShow] = useState(false)
     const handleFormChange = (event) => {
         const { id, value } = event.target; 
@@ -44,6 +44,10 @@ function GeneralInfo ({info, setValue}) {
         setShow(!show);
         console.log(!show)
     };
+    const updateForm = () => {
+        const newCV = {...cvData, "general": info}
+        updateCV(newCV)
+    }
     
     
     return (
@@ -55,7 +59,7 @@ function GeneralInfo ({info, setValue}) {
         {/* Buttons */}
         <div className="controllers">
             <button onClick = {handleShow}>Edit</button>
-            <button>Update</button>
+            <button onClick={updateForm}>Update</button>
         </div>
     </div>
     )

@@ -38,7 +38,7 @@ function WorkExperienceInputs ({info, handleFormChange}) {
         </>
     )
 }
-function WorkExperience ({info, setValue}) {
+function WorkExperience ({info, setValue, cvData, updateCV}) {
     const [show, setShow] = useState(false)
     const handleFormChange = (event) => {
         const { id, value } = event.target; 
@@ -50,6 +50,10 @@ function WorkExperience ({info, setValue}) {
         setShow(!show);
         console.log(!show)
     };
+    const updateForm = () => {
+        const newCV = {...cvData, "work": info}
+        updateCV(newCV)
+    }
 
     return (
         <div className = "workExperience dataContainer">
@@ -59,7 +63,7 @@ function WorkExperience ({info, setValue}) {
             {show && <WorkExperienceInputs info={info} handleFormChange={handleFormChange}/>}
             <div className="controllers">
                 <button onClick={handleShow}>Edit</button>
-                <button>Update</button>
+                <button onClick={updateForm}>Update</button>
             </div>
         </div>
     )

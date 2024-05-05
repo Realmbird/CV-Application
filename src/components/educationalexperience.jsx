@@ -28,7 +28,7 @@ function EducationInputs ({info, handleFormChange}) {
     />
     </>)
 }
-function EducationExperience ({info, setValue}) {
+function EducationExperience ({info, setValue, cvData, updateCV}) {
     const [show, setShow] = useState(false)
     const handleFormChange = (event) => {
         const { id, value } = event.target; 
@@ -40,6 +40,10 @@ function EducationExperience ({info, setValue}) {
         setShow(!show);
         console.log(!show)
     };
+    const updateForm = () => {
+        const newCV = {...cvData, "education": info}
+        updateCV(newCV)
+    }
 
     return (
         <div className="educationExperience dataContainer">
@@ -49,7 +53,7 @@ function EducationExperience ({info, setValue}) {
             {show && <EducationInputs info={info} handleFormChange={handleFormChange}/>}
             <div className="controllers">
                 <button onClick={handleShow}>Edit</button>
-                <button>Update</button>
+                <button onClick={updateForm}>Update</button>
             </div>
         </div>
     )
