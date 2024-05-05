@@ -36,6 +36,10 @@ function EducationExperience () {
             placeholder='Date of Study'
             onChange={handleFormChange}
             />
+            <div className="controllers">
+                <button>Edit</button>
+                <button>Update</button>
+            </div>
         </div>
     )
 }
