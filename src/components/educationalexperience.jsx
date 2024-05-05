@@ -16,6 +16,7 @@ function EducationExperience () {
             <input
             type="text"
             id="name"
+            value = {educationExperience.name}
             placeholder='School Name'
             onChange={handleFormChange}
             />
@@ -23,6 +24,7 @@ function EducationExperience () {
             <input
             type="text"
             id="title"
+            value = {educationExperience.title}
             placeholder='Title of Study'
             onChange={handleFormChange}
             />
@@ -30,6 +32,7 @@ function EducationExperience () {
             <input
             type="text"
             id="date"
+            value = {educationExperience.date}
             placeholder='Date of Study'
             onChange={handleFormChange}
             />
