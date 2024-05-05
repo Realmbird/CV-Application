@@ -1,0 +1,16 @@
+.dataContainer{
+    display: flex;
+    flex-direction: column;
+    width: 10vw;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #374151;
+    justify-content: start;
+    align-items: center;
+}
+.dataContainer input{
+    width: 100%;
+}
+.dataContainer h3.subtitle {
+    color: #fafafa;
+}

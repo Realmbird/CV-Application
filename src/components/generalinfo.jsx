@@ -1,22 +1,21 @@
-import { useState } from 'react'
-import '../styles/generalinfo.css'
-function GeneralInfo () {
-    const [generalInfo, setValue] = useState({});
+/* eslint-disable react/prop-types */
+// import { useState } from 'react'
+function GeneralInfo ({info, setValue}) {
     const handleFormChange = (event) => {
         const { id, value } = event.target; 
-        const newInfo = {...generalInfo, [id]: value}
+        const newInfo = {...info, [id]: value}
         setValue(newInfo)
         console.log(newInfo)
     }
     return (
-    <div className="generalInfo">
+    <div className="generalInfo dataContainer">
         <h3 className='subtitle'>
             General Info
         </h3>
         {/* name */}
         <input
         type="text"
-        value={generalInfo.name}
+        value={info.name}
         onChange={handleFormChange}
         id="name"
         placeholder='Name'
@@ -24,7 +23,7 @@ function GeneralInfo () {
         {/* email */}
         <input
         type="text"
-        value={generalInfo.email}
+        value={info.email}
         onChange={handleFormChange}
         id="email"
         placeholder='Email'
@@ -32,7 +31,7 @@ function GeneralInfo () {
         {/* phone */}
         <input
         type="text"
-        value={generalInfo.phone}
+        value={info.phone}
         onChange={handleFormChange}
         id="phone"
         placeholder='Phone Number'
